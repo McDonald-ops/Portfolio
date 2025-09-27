@@ -1,1 +1,32 @@
 @import "tailwindcss";
+
+:root {
+  --bg: #F9FAFB;
+  --text: #1F2937;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Source Sans 3', ui-sans-serif, system-ui;
+  font-weight: 600;
+}
+
+/* Global paddings */
+.container-x {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.section-y {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
