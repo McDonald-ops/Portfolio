@@ -1,5 +1,5 @@
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { useEffect, useMemo, useRef, useState } from 'react'
 
 export default function Hero() {
   const phrases = useMemo(() => [
@@ -21,7 +21,10 @@ export default function Hero() {
         if (!deleting) {
           const next = full.slice(0, prev.length + 1)
           if (next === full) {
-            setDeleting(true)
+            // Add delay before starting deletion
+            setTimeout(() => {
+              setDeleting(true)
+            }, 1000) // 1 second delay before starting to delete
           }
           return next
         } else {
@@ -52,15 +55,14 @@ export default function Hero() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.6 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="flex min-h-[60vh] flex-col items-center justify-center gap-6 text-center"
-    >
+      className="flex min-h-[60vh] flex-col items-center justify-center gap-6 text-center">
       <h1 className="text-5xl font-semibold tracking-tight sm:text-7xl">Hi, I'm Mcdonald</h1>
-      <p className="text-xl text-gray-700 sm:text-2xl">
+      <p className="text-xl font-semibold text-gray-700 sm:text-2xl">
         {text}
         <span className="ml-1 inline-block h-6 w-1 animate-pulse bg-gray-800 align-middle" />
       </p>
-      <div className="pt-2">
-        <a href="#contact" className="rounded-full bg-blue-600 px-10 py-3 text-sm font-semibold text-white shadow hover:bg-blue-700">Available for work</a>
+      <div className="pt-6">
+        <a href="#contact" className="rounded-full bg-transparent px-10 py-4 text-xl font-regular text-gray-900 border-4 border-gray-900 hover:scale-105 transition-transform duration-300">Available for work</a>
       </div>
     </motion.div>
   )

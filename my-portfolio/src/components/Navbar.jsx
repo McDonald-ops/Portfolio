@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import { MoonIcon } from '@heroicons/react/24/outline'
 
 const links = [
-  { href: '#home', label: 'Home' },
   { href: '#about', label: 'About' },
   { href: '#services', label: 'Services' },
   { href: '#portfolio', label: 'Portfolio' },
@@ -10,7 +9,7 @@ const links = [
 ]
 
 export default function Navbar() {
-  const [active, setActive] = useState('#home')
+  const [active, setActive] = useState('#about')
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -48,10 +47,9 @@ export default function Navbar() {
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
       <div className="mx-auto max-w-7xl container-x">
         <div className="pointer-events-auto mt-4 rounded-full border border-gray-200 bg-white/90 shadow-lg backdrop-blur">
-          <nav className="flex items-center justify-between px-4 py-2" aria-label="Global">
+          <nav className="flex items-center justify-between px-4 py-3" aria-label="Global">
             <a href="#home" className="flex items-center gap-3">
-              <span className="inline-block h-8 w-8 rounded-full bg-gray-200" />
-              <span className="text-sm font-semibold">Mcdonald</span>
+              <span className="inline-block h-10 w-10 rounded-full bg-gray-200" />
             </a>
         <button
           className="sm:hidden rounded-md border border-gray-200 px-3 py-1.5 text-sm text-gray-600"
@@ -60,18 +58,20 @@ export default function Navbar() {
         >
           Menu
         </button>
-        <div className="hidden items-center gap-6 sm:flex">
+        <div className="hidden items-center justify-center gap-8 sm:flex">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className={`text-sm hover:text-gray-900 ${active === l.href ? 'text-gray-900' : 'text-gray-600'}`}
+              className={`text-base font-semibold hover:text-gray-900 transition-colors duration-300 ${active === l.href ? 'text-blue-500' : 'text-gray-600'}`}
             >
               {l.label}
             </a>
           ))}
+        </div>
+        <div className="hidden sm:block">
           <button className="rounded-full p-2 hover:bg-gray-100" aria-label="Toggle theme">
-            <MoonIcon className="h-5 w-5 text-gray-700" />
+            <MoonIcon className="h-6 w-6 text-gray-700" />
           </button>
         </div>
           </nav>
@@ -83,7 +83,7 @@ export default function Navbar() {
                     <a
                       key={l.href}
                       href={l.href}
-                      className={`block rounded-md px-2 py-2 text-sm hover:bg-gray-100 ${active === l.href ? 'text-gray-900' : 'text-gray-600'}`}
+                      className={`block rounded-md px-2 py-2 text-base font-semibold hover:bg-gray-100 ${active === l.href ? 'text-blue-500' : 'text-gray-600'}`}
                     >
                       {l.label}
                     </a>
