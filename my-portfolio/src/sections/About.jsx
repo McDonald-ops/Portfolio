@@ -73,15 +73,15 @@ export default function About() {
           >
             <h2 className="text-4xl font-bold mb-12 text-center">Learning Journey</h2>
             
-            <div className="max-w-4xl mx-auto relative">
+            <div className="max-w-5xl mx-auto relative">
               {/* Timeline Stages with broken vertical lines */}
               <div className="relative">
                 {journeyStages.map((stage, index) => (
                   <div key={index} className="mb-12 relative">
                     {/* Central Vertical Line segment - Stops at bottom of each card */}
-                    {index < journeyStages.length - 1 && (
+                    
                       <div className="absolute left-1/2 top-8 bottom-0 h-full w-0.5 bg-gray-300 transform -translate-x-1/2 z-0" />
-                    )}
+                    
                     
                     {/* Stage Card */}
                     <motion.div 
