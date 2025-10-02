@@ -77,9 +77,9 @@ export default function Portfolio() {
   const visibleProjects = showAll ? projectsData : projectsData.slice(0, 4)
 
   return (
-    <div className="mx-auto max-w-7xl py-24 bg-white">
+    <div className="mx-auto max-w-7xl bg-white min-h-[70vh] pt-6 pb-10">
       {/* Title */}
-      <h2 className="text-4xl font-bold text-center mb-16">Portfolio</h2>
+      <h2 className="text-4xl font-extrabold text-center mb-10">Portfolio</h2>
 
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -90,18 +90,18 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.4, delay: i * 0.05 }}
-            className="group bg-white rounded-2xl shadow-xl p-4"
+            className="group bg-white rounded-2xl shadow-xl p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl"
           >
             <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" className="block">
               <img
                 src={p.imageSrc}
                 alt={`${p.title} thumbnail`}
-                className="h-64 w-full rounded-xl object-cover"
+                className="h-64 w-full rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.02]"
               />
             </a>
             <div className="mt-4">
               <div className="flex items-center gap-2">
-                <h3 className="text-2xl font-bold">{p.title}</h3>
+                <h3 className="text-2xl font-semibold">{p.title}</h3>
                 <a
                   href={p.liveUrl}
                   target="_blank"
@@ -112,12 +112,12 @@ export default function Portfolio() {
                   <ExternalLink className="h-5 w-5 text-gray-500 transition-colors group-hover:text-gray-700" />
                 </a>
               </div>
-              <p className="mt-2 text-gray-600">{p.description}</p>
+              <p className="mt-2 font-medium text-lg text-gray-600">{p.description}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {p.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs"
+                    className="bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-sm"
                   >
                     {tag}
                   </span>
@@ -132,7 +132,7 @@ export default function Portfolio() {
       <div className="flex justify-center">
         <button
           onClick={() => setShowAll((v) => !v)}
-          className="mt-12 rounded-full bg-gray-900 px-6 py-3 text-white font-semibold hover:bg-gray-800 transition-colors"
+          className="mt-12 rounded-full bg-transparent px-10 py-4 text-xl font-regular text-gray-900 border-4 border-gray-900 hover:scale-105 transition-transform duration-300 inline-block text-center"
         >
           {showAll ? 'View Less' : 'View More'}
         </button>
