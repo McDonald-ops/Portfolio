@@ -17,7 +17,7 @@ export default function Contact() {
       className="mx-auto max-w-4xl"
     >
       {/* Title */}
-      <h2 className="text-4xl font-bold text-center mb-6">Get in Touch</h2>
+      <h2 className="text-4xl font-extrabold text-center mb-6">Get in Touch</h2>
       {/* Subtitle */}
       <p className="text-lg text-gray-600 font-medium text-center mb-8 ">
         Whether it’s starting fresh, improving what’s already there, or coding side by side, I’d love to hear from you.
