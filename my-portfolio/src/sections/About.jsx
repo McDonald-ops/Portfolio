@@ -25,7 +25,7 @@ export default function About() {
   return (
     <div>
       {/* About Me Section Container */}
-      <div className="bg-white py-24">
+      <div className="bg-white pt-24 pb-4">
         <div className="max-w-7xl mx-auto">
           {/* About Me Section */}
           <motion.div
