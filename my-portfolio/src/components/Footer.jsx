@@ -9,11 +9,13 @@ const socialLinks = [
 export default function Footer() {
   return (
     <>
-      {/* Full-width divider before the footer */}
-      <hr className="my-20 border-gray-200" />
+      {/* Divider aligned to floating header width */}
+      <div className="mx-auto max-w-7xl container-x">
+        <hr className="my-0 border-gray-300" />
+      </div>
 
       <footer>
-        <div className="mx-auto max-w-4xl pb-12 text-center">
+        <div className="mx-auto max-w-4xl py-16 text-center">
           {/* Social icons row */}
           <div className="flex items-center justify-center space-x-6 mb-4">
             {socialLinks.map((s) => {
@@ -34,7 +36,7 @@ export default function Footer() {
             })}
           </div>
           {/* Copyright */}
-          <p className="text-sm text-gray-500">© 2025 McDonald Odiase. All rights reserved.</p>
+          <p className="text-md text-gray-500">© 2025 McDonald Odiase. All rights reserved.</p>
         </div>
       </footer>
     </>
