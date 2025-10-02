@@ -14,12 +14,12 @@ export default function Contact() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="mx-auto max-w-4xl py-24 md:py-32"
+      className="mx-auto max-w-4xl"
     >
       {/* Title */}
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Get in Touch</h2>
+      <h2 className="text-4xl font-bold text-center mb-6">Get in Touch</h2>
       {/* Subtitle */}
-      <p className="text-lg text-gray-600 text-center mb-16 md:mb-20">
+      <p className="text-lg text-gray-600 font-medium text-center mb-8 ">
         Whether it’s starting fresh, improving what’s already there, or coding side by side, I’d love to hear from you.
       </p>
 
@@ -30,20 +30,22 @@ export default function Contact() {
           const isLink = Boolean(item.link)
           return (
             <div key={item.label} className="text-center">
-              <Icon className="mx-auto h-8 w-8 text-gray-800" aria-hidden="true" />
-              <div className="mt-3 text-sm font-semibold text-gray-900">{item.label}</div>
+              <div className="flex items-center justify-center gap-2">
+                <Icon className="h-8 w-8 text-gray-800" aria-hidden="true" />
+                <div className="text-xl font-semibold text-gray-900">{item.label}</div>
+              </div>
               <div className="mt-1">
                 {isLink ? (
                   <a
                     href={item.link}
-                    className="text-gray-700 hover:text-gray-900 transition-colors"
+                    className="text-lg font-normal text-gray-700 hover:text-gray-900 transition-colors"
                     target={item.link?.startsWith('http') ? '_blank' : undefined}
                     rel={item.link?.startsWith('http') ? 'noopener noreferrer' : undefined}
                   >
                     {item.value}
                   </a>
                 ) : (
-                  <span className="text-gray-700">{item.value}</span>
+                  <span className="text-lg font-normal text-gray-700">{item.value}</span>
                 )}
               </div>
             </div>
