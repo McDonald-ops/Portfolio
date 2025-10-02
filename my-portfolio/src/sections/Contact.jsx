@@ -1,22 +1,56 @@
 import { motion } from 'framer-motion'
+import { Mail, Phone, MapPin } from 'lucide-react'
+
+const contactInfo = [
+  { icon: Mail, label: 'Email', value: 'odiasemcdonald1@gmail.com', link: 'mailto:odiasemcdonald1@gmail.com' },
+  { icon: Phone, label: 'Phone', value: '+234 814 732 3712', link: 'tel:+2348147323712' },
+  { icon: MapPin, label: 'Location', value: 'Nigeria (Remote Available)' },
+]
 
 export default function Contact() {
   return (
-    <motion.div
+    <motion.section
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="max-w-xl"
+      className="mx-auto max-w-4xl py-24 md:py-32"
     >
-      <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Contact</h2>
-      <form className="mt-6 space-y-4">
-        <input className="w-full rounded-md border border-neutral-800 bg-neutral-900 px-3 py-2 text-sm text-white placeholder-neutral-500 focus:border-neutral-600 focus:outline-none" placeholder="Your name" />
-        <input type="email" className="w-full rounded-md border border-neutral-800 bg-neutral-900 px-3 py-2 text-sm text-white placeholder-neutral-500 focus:border-neutral-600 focus:outline-none" placeholder="Your email" />
-        <textarea rows="5" className="w-full resize-none rounded-md border border-neutral-800 bg-neutral-900 px-3 py-2 text-sm text-white placeholder-neutral-500 focus:border-neutral-600 focus:outline-none" placeholder="Your message"></textarea>
-        <button type="submit" className="rounded-md bg-white px-4 py-2 text-sm font-medium text-neutral-900 hover:bg-neutral-200">Send Message</button>
-      </form>
-    </motion.div>
+      {/* Title */}
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Get in Touch</h2>
+      {/* Subtitle */}
+      <p className="text-lg text-gray-600 text-center mb-16 md:mb-20">
+        Whether it’s starting fresh, improving what’s already there, or coding side by side, I’d love to hear from you.
+      </p>
+
+      {/* Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10 justify-items-center">
+        {contactInfo.map((item) => {
+          const Icon = item.icon
+          const isLink = Boolean(item.link)
+          return (
+            <div key={item.label} className="text-center">
+              <Icon className="mx-auto h-8 w-8 text-gray-800" aria-hidden="true" />
+              <div className="mt-3 text-sm font-semibold text-gray-900">{item.label}</div>
+              <div className="mt-1">
+                {isLink ? (
+                  <a
+                    href={item.link}
+                    className="text-gray-700 hover:text-gray-900 transition-colors"
+                    target={item.link?.startsWith('http') ? '_blank' : undefined}
+                    rel={item.link?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  >
+                    {item.value}
+                  </a>
+                ) : (
+                  <span className="text-gray-700">{item.value}</span>
+                )}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </motion.section>
   )
 }
 
