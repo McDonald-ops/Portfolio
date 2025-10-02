@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { SunIcon, MoonIcon } from '@heroicons/react/24/outline'
+import { SunIcon, MoonIcon, Bars3Icon } from '@heroicons/react/24/outline'
 
 const links = [
   { href: '#about', label: 'About' },
@@ -52,13 +52,7 @@ export default function Navbar() {
             <a href="#home" className="flex items-center gap-3">
               <span className="inline-block h-10 w-10 rounded-full bg-gray-200" />
             </a>
-        <button
-          className="sm:hidden rounded-md border border-gray-200 px-3 py-1.5 text-sm text-gray-600"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          Menu
-        </button>
+        
         <div className="hidden items-center justify-center gap-8 sm:flex">
           {links.map((l) => (
             <a
@@ -70,7 +64,7 @@ export default function Navbar() {
             </a>
           ))}
         </div>
-        <div>
+        <div className="flex items-center gap-2">
           <button
             type="button"
             className="bg-gray-200 rounded-full w-10 h-10 flex items-center justify-center hover:bg-gray-300 transition"
@@ -83,25 +77,34 @@ export default function Navbar() {
               <MoonIcon className="h-5 w-5 text-gray-700" />
             )}
           </button>
+          <button
+            type="button"
+            className="sm:hidden p-2 text-gray-700 hover:text-gray-900 transition"
+            aria-label="Toggle menu"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <Bars3Icon className="h-6 w-6" />
+          </button>
         </div>
           </nav>
-          {open && (
-            <div className="sm:hidden border-t border-gray-200 bg-white/95">
-              <div className="px-4 py-3">
-                <div className="grid gap-2">
-                  {links.map((l) => (
-                    <a
-                      key={l.href}
-                      href={l.href}
-                      className={`block rounded-md px-2 py-2 text-base font-semibold hover:bg-gray-100 ${active === l.href ? 'text-blue-500' : 'text-gray-600'}`}
-                    >
-                      {l.label}
-                    </a>
-                  ))}
-                </div>
+          <div
+            className={`sm:hidden border-t border-gray-200 bg-white/95 overflow-hidden transition-[max-height] duration-300 ease-out ${open ? 'max-h-64' : 'max-h-0'}`}
+            aria-hidden={!open}
+          >
+            <div className="px-4 py-3">
+              <div className="grid gap-2">
+                {links.map((l) => (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    className={`block rounded-md px-2 py-2 text-base font-semibold hover:bg-gray-100 ${active === l.href ? 'text-blue-500' : 'text-gray-600'}`}
+                  >
+                    {l.label}
+                  </a>
+                ))}
               </div>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </header>
