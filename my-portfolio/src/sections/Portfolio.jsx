@@ -77,7 +77,7 @@ export default function Portfolio() {
   const visibleProjects = showAll ? projectsData : projectsData.slice(0, 4)
 
   return (
-    <div className="mx-auto max-w-7xl bg-white min-h-[70vh] pt-6 pb-10">
+    <div className="mx-auto max-w-7xl bg-white min-h-[70vh] pt-6 pb-10 px-4 sm:px-6 lg:px-8">
       {/* Title */}
       <h2 className="text-4xl font-extrabold text-center mb-10">Portfolio</h2>
 
