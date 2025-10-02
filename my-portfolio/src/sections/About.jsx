@@ -47,8 +47,8 @@ export default function About() {
             {/* Right Column - Content */}
             <div className="flex flex-col gap-8">
               <div>
-                <h2 className="text-4xl font-bold mb-6">About Me</h2>
-                <p className="text-lg text-gray-700 leading-relaxed">
+                <h2 className="text-4xl font-extrabold mb-10">About Me</h2>
+                <p className="text-lg text-gray-700 font-medium leading-relaxed">
                   My journey into tech started from curiosity and a love for solving puzzles.
                    As a kid, I was always tinkering with things, and that curiosity eventually turned into building solutions with code.<br/> Today, I’m a frontend developer who enjoys creating clean, responsive, and user-friendly web apps with React, Next.js, and Tailwind CSS. I love the challenge of turning complex ideas into simple, elegant designs. Just like Alan Kay said “The best way to predict the future is to build it”. Outside of coding, you’ll usually<br/> find me gaming, working out, or catching a good football match.
                 </p>
@@ -77,10 +77,11 @@ export default function About() {
               {/* Timeline Stages with broken vertical lines */}
               <div className="relative">
                 {journeyStages.map((stage, index) => (
-                  <div key={index} className="mb-12 relative">
+                  <div key={index} className="mb-10 relative">
                     {/* Central Vertical Line segment - Stops at bottom of each card */}
                     
-                      <div className="absolute left-1/2 top-8 bottom-0 h-full w-0.5 bg-gray-300 transform -translate-x-1/2 z-0" />
+                      <div className="md:hidden absolute left-2 top-8 bottom-0 h-full w-0.5 bg-gray-300 z-0" />
+                      <div className="hidden md:block absolute left-1/2 top-8 bottom-0 h-full w-0.5 bg-gray-300 transform -translate-x-1/2 z-0" />
                     
                     
                     {/* Stage Card */}
@@ -89,17 +90,18 @@ export default function About() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className={`bg-white rounded-xl shadow-md p-6 w-full max-w-sm md:max-w-md min-h-48 md:min-h-56 ${index % 2 === 0 ? 'md:ml-0 md:mr-auto ' : 'md:ml-auto md:mr-0 '}`}
+                      className={`bg-white rounded-xl shadow-md p-4 w-full max-w-sm md:max-w-md min-h-48 md:min-h-56 mx-auto ${index % 2 === 0 ? 'md:ml-0 md:mr-auto ' : 'md:ml-auto md:mr-0 '}`}
                       style={{
                         zIndex: 1, // Ensure cards are above the central line
                       }}
                     >
                       <h3 className="text-2xl font-semibold mb-2">{stage.title}</h3>
-                      <p className="text-gray-600 text-lg leading-relaxed">{stage.description}</p>
+                      <p className="text-gray-600 text-lg font-medium leading-relaxed">{stage.description}</p>
                     </motion.div>
                     
                     {/* Stage Marker - Positioned at the top edge of the card */}
-                    <div className={`absolute top-0 left-1/2 w-4 h-4 bg-blue-500 rounded-full transform -translate-x-1/2 z-20`} />
+                    <div className={`md:hidden absolute top-0 left-2 w-3 h-3 bg-blue-500 rounded-full z-20`} />
+                    <div className={`hidden md:block absolute top-0 left-1/2 w-4 h-4 bg-blue-500 rounded-full transform -translate-x-1/2 z-20`} />
                   </div>
                 ))}
               </div>
@@ -109,7 +111,7 @@ export default function About() {
         </div>
       </div>
       
-      {/* Stacks Section - Outside the About Me container */}
+        {/* Stacks Section - Outside the About Me container */}
       <motion.div 
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -158,7 +160,7 @@ function StackGrid() {
 
   // Configuration
   const itemsPerPage = 6; // 6 items visible on desktop
-  const intervalDuration = 3000; // Slide every 3 seconds
+  const intervalDuration = 4000; // Slide every 4 seconds for a slower pace
 
   // Duplicate the first few items to create a seamless visual loop
   const duplicatedItems = stackItems.concat(stackItems.slice(0, itemsPerPage));
@@ -180,7 +182,7 @@ function StackGrid() {
 
   // Define the Framer Motion transition properties
   const slideTransition = {
-    duration: 1.0, // 1 second slide animation
+    duration: 1.2, // slightly slower slide animation
     ease: "easeInOut",
   };
 
@@ -204,7 +206,7 @@ function StackGrid() {
           <div
             key={index}
             // w-full on mobile, w-1/3 on small/medium screens, w-1/6 on large screens
-            className={`flex-shrink-0 w-full sm:w-1/3 lg:w-1/${itemsPerPage}`} 
+            className="flex-shrink-0 w-full sm:w-1/3 lg:w-1/6" 
           >
             {/* Inner padding for spacing between cards */}
             <div className="p-3">
