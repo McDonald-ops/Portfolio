@@ -47,7 +47,7 @@ export default function Navbar() {
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
       <div className="mx-auto max-w-7xl container-x">
-        <div className="pointer-events-auto mt-4 rounded-full border border-gray-200 bg-white/90 shadow-lg backdrop-blur">
+        <div className="pointer-events-auto mt-4 rounded-full border border-gray-100 bg-[#F9FAFB]/90 shadow-lg backdrop-blur">
           <nav className="flex items-center justify-between px-4 py-3" aria-label="Global">
             <a href="#home" className="flex items-center gap-3">
               <span className="inline-block h-10 w-10 rounded-full bg-gray-200" />
