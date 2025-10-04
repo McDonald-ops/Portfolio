@@ -50,7 +50,7 @@ export default function About() {
                 <h2 className="text-4xl font-extrabold mb-10">About Me</h2>
                 <p className="text-lg text-gray-700 font-medium leading-relaxed">
                   My journey into tech started from curiosity and a love for solving puzzles.
-                   As a kid, I was always tinkering with things, and that curiosity eventually turned into building solutions with code.<br/> Today, I’m a frontend developer who enjoys creating clean, responsive, and user-friendly web apps with React, Next.js, and Tailwind CSS. I love the challenge of turning complex ideas into simple, elegant designs. Just like Alan Kay said “The best way to predict the future is to build it”. Outside of coding, you’ll usually<br/> find me gaming, working out, or catching a good football match.
+                   As a kid, I was always tinkering with things, and that curiosity eventually turned into building solutions with code.<br/> Today, I’m a frontend developer who enjoys creating clean, responsive, and user-friendly web apps with React, Next.js, and Tailwind CSS. I love the challenge of turning complex ideas into simple, elegant designs. Just like Alan Kay said “The best way to predict the future is to build it”. Outside of coding, you’ll usually find me gaming, working out, or catching a good football match.
                 </p>
               </div>
               

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { SunIcon, MoonIcon, Bars3Icon } from '@heroicons/react/24/outline'
+import avatar from '../assets/avatar.jpg'
 
 const links = [
   { href: '#about', label: 'About' },
@@ -50,7 +51,9 @@ export default function Navbar() {
         <div className="pointer-events-auto mt-4 rounded-full border border-gray-100 bg-[#F9FAFB]/90 shadow-lg backdrop-blur">
           <nav className="flex items-center justify-between px-4 py-3" aria-label="Global">
             <a href="#home" className="flex items-center gap-3">
-              <span className="inline-block h-10 w-10 rounded-full bg-gray-200" />
+              <div className="h-10 w-10 rounded-full overflow-hidden bg-transparent">
+                <img src={avatar} alt="Avatar" className="h-full w-full object-cover" />
+              </div>
             </a>
         
         <div className="hidden items-center justify-center gap-8 sm:flex">
