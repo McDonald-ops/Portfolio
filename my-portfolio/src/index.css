@@ -1,8 +1,79 @@
-@import "tailwindcss";
+@import "tailwindcss";  
 
 :root {
   --bg: #F9FAFB;
   --text: #1F2937;
+  --accent: #1F2937;
+  --accent-contrast: #F3F4F6;
+  --btn-bg: transparent;
+  --btn-border: #1F2937;
+  --service-card-bg: #FFFFFF;
+  --text-secondary: #4B5563;
+  --portfolio-bg: #FFFFFF;
+  --tag-bg: #F3F4F6;
+  --tag-text: #374151;
+  --icon: #6B7280;
+
+  /* Contact */
+  --contact-subtext: #4B5563;
+  --contact-label: #111827;
+  --contact-link: #374151;
+  --contact-link-hover: #111827;
+  --contact-icon: #1F2937;
+
+  /* Footer */
+  --footer-icon: #374151;
+  --footer-icon-hover: #111827;
+  --footer-text: #6B7280;
+  --divider: #D1D5DB;
+
+  /* Navbar */
+  --nav-bg: rgba(249, 250, 251, 0.9); /* white/90 */
+  --nav-border: #F3F4F6; /* gray-100 */
+  --nav-link: #4B5563; /* gray-600 */
+  --nav-link-hover: #111827; /* gray-900 */
+  --nav-link-active: #3B82F6; /* blue-500 */
+  --nav-mobile-bg: rgba(255, 255, 255, 0.95);
+  --nav-mobile-border: #E5E7EB; /* gray-200 */
+  --nav-mobile-hover: #F3F4F6; /* gray-100 */
+}
+
+/* Dark theme */
+html.dark {
+  --bg: #111827;
+  --text: #F3F4F6;
+  --about-bg: #030712;
+  --accent: #F3F4F6;
+  --btn-border: #F3F4F6;
+  --service-card-bg: #1F2937;
+  --text-secondary: #D1D5DB;
+  --portfolio-bg: #030712;
+  --tag-bg: #1F2937;
+  --tag-text: #E5E7EB;
+  --icon: #D1D5DB;
+
+  /* Contact */
+  --contact-subtext: #D1D5DB;
+  --contact-label: #F3F4F6;
+  --contact-link: #E5E7EB;
+  --contact-link-hover: #FFFFFF;
+  --contact-icon: #F3F4F6;
+
+  /* Footer */
+  --footer-icon: #E5E7EB;
+  --footer-icon-hover: #FFFFFF;
+  --footer-text: #9CA3AF;
+  --divider: #374151;
+
+  /* Navbar */
+  --nav-bg: rgba(17, 24, 39, 0.9); /* slate-900/90 */
+  --nav-border: #1F2937; /* gray-800 */
+  --nav-link: #D1D5DB; /* gray-300 */
+  --nav-link-hover: #FFFFFF;
+  --nav-link-active: #60A5FA; /* blue-400 */
+  --nav-mobile-bg: rgba(17, 24, 39, 0.95);
+  --nav-mobile-border: #374151; /* gray-700 */
+  --nav-mobile-hover: #1F2937; /* gray-800 */
 }
 
 html, body, #root {
@@ -18,9 +89,9 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Source Sans 3', ui-sans-serif, system-ui;
   font-weight: 600;
+  color: var(--text);
 }
 
-/* Global paddings */
 .container-x {
   padding-left: 2rem;
   padding-right: 2rem;
@@ -29,4 +100,16 @@ h1, h2, h3, h4, h5, h6 {
 .section-y {
   padding-top: 4rem;
   padding-bottom: 4rem;
+}
+
+.about-container {
+  background: var(--bg);
+}
+
+html.dark .about-container {
+  background: var(--about-bg);
+}
+
+.portfolio-container {
+  background: var(--portfolio-bg);
 }

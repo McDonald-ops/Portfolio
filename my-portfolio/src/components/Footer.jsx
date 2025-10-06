@@ -11,7 +11,7 @@ export default function Footer() {
     <>
       {/* Divider aligned to floating header width */}
       <div className="mx-auto max-w-7xl container-x">
-        <hr className="my-0 border-gray-300" />
+        <hr className="my-0" style={{ borderColor: 'var(--divider)' }} />
       </div>
 
       <footer>
@@ -28,7 +28,10 @@ export default function Footer() {
                   aria-label={s.label}
                   target={isExternal ? '_blank' : undefined}
                   rel={isExternal ? 'noopener noreferrer' : undefined}
-                  className="text-gray-700 hover:text-gray-900 transition-colors"
+                  style={{ color: 'var(--footer-icon)' }}
+                  className="transition-colors"
+                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--footer-icon-hover)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--footer-icon)')}
                 >
                   <Icon className="h-6 w-6" />
                 </a>
@@ -36,14 +39,11 @@ export default function Footer() {
             })}
           </div>
           {/* Copyright */}
-          <p className="text-md text-gray-500">© 2025 McDonald Odiase. All rights reserved.</p>
+          <p className="text-md" style={{ color: 'var(--footer-text)' }}>
+            © 2025 McDonald Odiase. All rights reserved.
+          </p>
         </div>
       </footer>
     </>
   )
 }
-
-
-
-
-

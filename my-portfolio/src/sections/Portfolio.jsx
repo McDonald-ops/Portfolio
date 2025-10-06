@@ -11,7 +11,6 @@ import portfolioV1Img from '../assets/Portfolio-v1.png'
 import taskManagerImg from '../assets/taskmanager.png'
 
 const projectsData = [
-  // PROJECT 1: Krea (Top-Left)
   {
     id: 1,
     title: 'Krea-AI',
@@ -21,7 +20,6 @@ const projectsData = [
     liveUrl: 'https://cartolinks-chi.vercel.app/',
     tags: ['Next.js', 'Typescript', 'Framer Motion'],
   },
-  // PROJECT 2: Github Explorer (Top-Right)
   {
     id: 2,
     title: 'Github User Finder',
@@ -31,7 +29,6 @@ const projectsData = [
     liveUrl: 'https://alx-fe-reactjs-ruby.vercel.app/',
     tags: ['React', 'Javascript', 'Tailwind CSS'],
   },
-  // PROJECT 3 Recipe App (bottom left)
   {
     id: 3,
     title: 'RecipeShare',
@@ -41,7 +38,6 @@ const projectsData = [
     liveUrl: 'https://recipe-sharing-platform-weld.vercel.app/',
     tags: ['React', 'Javascript', 'Tailwind CSS'],
   },
-  // PROJECT 4  Weather Dashboard (bottom right)
   {
     id: 4,
     title: 'Forecast Hub',
@@ -51,7 +47,6 @@ const projectsData = [
     liveUrl: 'https://weather-dashboard-six-lac.vercel.app/',
     tags: ['React', 'Javascript', 'Tailwind CSS'],
   },
-  // PROJECT 5: Portfolio (New Project, will be hidden initially)
   {
     id: 5,
     title: 'Portfolio Website v 1.0',
@@ -60,12 +55,11 @@ const projectsData = [
     liveUrl: 'https://sites.google.com/view/mcdonald-dev?usp=sharing',
     tags: ['Google site'],
   },
-  // PROJECT 6: To-do App (New Project, will be hidden initially)
   {
     id: 6,
     title: 'Task Manager',
     description:
-      'A simple, fast to‑do list app with an inline calendar and filters that helps users track their daily tasks and activities.',
+      'A simple, fast to-do list app with an inline calendar and filters that helps users track their daily tasks and activities.',
     imageSrc: taskManagerImg,
     liveUrl: 'https://task-manager-roan-iota.vercel.app/',
     tags: ['HTML', 'CSS', 'Javascript'],
@@ -77,7 +71,7 @@ export default function Portfolio() {
   const visibleProjects = showAll ? projectsData : projectsData.slice(0, 4)
 
   return (
-    <div className="mx-auto max-w-7xl bg-white min-h-[70vh] pt-6 pb-10 px-4 sm:px-6 lg:px-8">
+    <div className="portfolio-container mx-auto max-w-7xl min-h-[70vh] pt-6 pb-10 px-4 sm:px-6 lg:px-8">
       {/* Title */}
       <h2 className="text-4xl font-extrabold text-center mb-10">Portfolio</h2>
 
@@ -90,7 +84,8 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.4, delay: i * 0.05 }}
-            className="group bg-white rounded-2xl shadow-xl p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl"
+            className="group rounded-2xl shadow-xl p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl"
+            style={{ background: "var(--service-card-bg)" }}
           >
             <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" className="block">
               <img
@@ -101,7 +96,7 @@ export default function Portfolio() {
             </a>
             <div className="mt-4">
               <div className="flex items-center gap-2">
-                <h3 className="text-2xl font-semibold">{p.title}</h3>
+                <h3 className="text-2xl font-semibold" style={{ color: "var(--text)" }}>{p.title}</h3>
                 <a
                   href={p.liveUrl}
                   target="_blank"
@@ -109,15 +104,18 @@ export default function Portfolio() {
                   aria-label={`Open ${p.title}`}
                   className="inline-flex"
                 >
-                  <ExternalLink className="h-5 w-5 text-gray-500 transition-colors group-hover:text-gray-700" />
+                  <ExternalLink className="h-5 w-5 transition-colors" style={{ color: "var(--icon)" }} />
                 </a>
               </div>
-              <p className="mt-2 font-medium text-lg text-gray-600">{p.description}</p>
+              <p className="mt-2 font-medium text-lg" style={{ color: "var(--text-secondary)" }}>
+                {p.description}
+              </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {p.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-sm"
+                    className="rounded-full px-3 py-1 text-sm"
+                    style={{ background: "var(--tag-bg)", color: "var(--tag-text)" }}
                   >
                     {tag}
                   </span>
@@ -132,7 +130,11 @@ export default function Portfolio() {
       <div className="flex justify-center">
         <button
           onClick={() => setShowAll((v) => !v)}
-          className="mt-12 rounded-full bg-transparent px-10 py-4 text-xl font-regular text-gray-900 border-4 border-gray-900 hover:scale-105 transition-transform duration-300 inline-block text-center"
+          className="mt-12 rounded-full bg-transparent px-10 py-4 text-xl font-regular hover:scale-105 transition-transform duration-300 inline-block text-center"
+          style={{
+            color: "var(--text)",
+            border: "4px solid var(--btn-border)",
+          }}
         >
           {showAll ? 'View Less' : 'View More'}
         </button>
@@ -140,4 +142,3 @@ export default function Portfolio() {
     </div>
   )
 }
-

@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
-import { motion, useAnimation, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import vectorImage from '../assets/vector.png'
 import CSS3_logo from '../assets/CSS3_logo.png'
 import ESLint_logo from '../assets/ESLint_logo.png'
@@ -24,8 +24,8 @@ export default function About() {
 
   return (
     <div>
-      {/* About Me Section Container */}
-      <div className="bg-white pt-24 pb-4">
+      {/* About Section Container (now dark-aware) */}
+      <div className="about-container pt-24 pb-4">
         <div className="max-w-7xl mx-auto">
           {/* About Me Section */}
           <motion.div
@@ -48,15 +48,19 @@ export default function About() {
             <div className="flex flex-col gap-8">
               <div>
                 <h2 className="text-4xl font-extrabold mb-10">About Me</h2>
-                <p className="text-lg text-gray-700 font-medium leading-relaxed">
+                <p className="text-lg font-medium leading-relaxed">
                   My journey into tech started from curiosity and a love for solving puzzles.
-                   As a kid, I was always tinkering with things, and that curiosity eventually turned into building solutions with code.<br/> Today, I’m a frontend developer who enjoys creating clean, responsive, and user-friendly web apps with React, Next.js, and Tailwind CSS. I love the challenge of turning complex ideas into simple, elegant designs. Just like Alan Kay said “The best way to predict the future is to build it”. Outside of coding, you’ll usually find me gaming, working out, or catching a good football match.
+                  As a kid, I was always tinkering with things, and that curiosity eventually turned into building solutions with code.<br/> 
+                  Today, I’m a frontend developer who enjoys creating clean, responsive, and user-friendly web apps with React, Next.js, and Tailwind CSS. 
+                  I love the challenge of turning complex ideas into simple, elegant designs. 
+                  Just like Alan Kay said “The best way to predict the future is to build it”. 
+                  Outside of coding, you’ll usually find me gaming, working out, or catching a good football match.
                 </p>
               </div>
               
               {/* CTA Button */}
               <div className="pt-6">
-                <a href="#contact" className="rounded-full bg-transparent px-10 py-4 text-xl font-regular text-gray-900 border-4 border-gray-900 hover:scale-105 transition-transform duration-300 inline-block text-center">
+                <a href="#contact" className="rounded-full bg-transparent px-10 py-4 text-xl font-regular border-4 hover:scale-105 transition-transform duration-300 inline-block text-center">
                   Get in Touch
                 </a>
               </div>
@@ -74,15 +78,12 @@ export default function About() {
             <h2 className="text-4xl font-bold mb-12 text-center">Learning Journey</h2>
             
             <div className="max-w-5xl mx-auto relative">
-              {/* Timeline Stages with broken vertical lines */}
               <div className="relative">
                 {journeyStages.map((stage, index) => (
                   <div key={index} className="mb-10 relative">
-                    {/* Central Vertical Line segment - Stops at bottom of each card */}
-                    
-                      <div className="md:hidden absolute left-2 top-8 bottom-0 h-full w-0.5 bg-gray-300 z-0" />
-                      <div className="hidden md:block absolute left-1/2 top-8 bottom-0 h-full w-0.5 bg-gray-300 transform -translate-x-1/2 z-0" />
-                    
+                    {/* Vertical Line */}
+                    <div className="md:hidden absolute left-2 top-8 bottom-0 h-full w-0.5 bg-gray-300 z-0" />
+                    <div className="hidden md:block absolute left-1/2 top-8 bottom-0 h-full w-0.5 bg-gray-300 transform -translate-x-1/2 z-0" />
                     
                     {/* Stage Card */}
                     <motion.div 
@@ -90,16 +91,14 @@ export default function About() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className={`bg-white rounded-xl shadow-md p-4 w-full max-w-sm md:max-w-md min-h-48 md:min-h-56 mx-auto ${index % 2 === 0 ? 'md:ml-0 md:mr-auto ' : 'md:ml-auto md:mr-0 '}`}
-                      style={{
-                        zIndex: 1, // Ensure cards are above the central line
-                      }}
+                      className={`rounded-xl shadow-md p-4 w-full max-w-sm md:max-w-md min-h-48 md:min-h-56 mx-auto ${index % 2 === 0 ? 'md:ml-0 md:mr-auto ' : 'md:ml-auto md:mr-0 '}`}
+                      style={{ background: "var(--bg)", color: "var(--text)", zIndex: 1 }}
                     >
                       <h3 className="text-2xl font-semibold mb-2">{stage.title}</h3>
-                      <p className="text-gray-600 text-lg font-medium leading-relaxed">{stage.description}</p>
+                      <p className="text-lg font-medium leading-relaxed">{stage.description}</p>
                     </motion.div>
                     
-                    {/* Stage Marker - Positioned at the top edge of the card */}
+                    {/* Stage Marker */}
                     <div className={`md:hidden absolute top-0 left-2 w-3 h-3 bg-blue-500 rounded-full z-20`} />
                     <div className={`hidden md:block absolute top-0 left-1/2 w-4 h-4 bg-blue-500 rounded-full transform -translate-x-1/2 z-20`} />
                   </div>
@@ -107,39 +106,31 @@ export default function About() {
               </div>
             </div>
           </motion.div>
-          
+
+          {/* ✅ Stacks Section is now wrapped inside About container */}
+          <motion.div 
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
+            className="mt-8 py-16"
+          >
+            <motion.h3 
+              className="text-4xl font-bold text-center mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              Stacks
+            </motion.h3>
+            <StackGrid />
+          </motion.div>
         </div>
       </div>
-      
-        {/* Stacks Section - Outside the About Me container */}
-      <motion.div 
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
-        className="mt-8 py-16"
-      >
-        <motion.h3 
-          className="text-4xl font-bold text-center mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          Stacks
-        </motion.h3>
-        
-        {/* StackGrid is now a standalone component call */}
-        <StackGrid />
-      </motion.div>
     </div>
   )
 }
-
-// =========================================================================
-// 2. STACK GRID COMPONENT (AUTO-SLIDING CAROUSEL)
-// The logic is moved here and updated for the carousel effect.
-// =========================================================================
 
 function StackGrid() {
   const stackItems = useMemo(() => [
@@ -157,34 +148,21 @@ function StackGrid() {
   ], []);
 
   const [startIndex, setStartIndex] = useState(0);
+  const itemsPerPage = 6;
+  const intervalDuration = 2000;
 
-  // Configuration
-  const itemsPerPage = 6; // 6 items visible on desktop
-  const intervalDuration = 4000; // Slide every 4 seconds for a slower pace
-
-  // Duplicate the first few items to create a seamless visual loop
   const duplicatedItems = stackItems.concat(stackItems.slice(0, itemsPerPage));
-  const maxStartIndex = stackItems.length; // Max index before reset
+  const maxStartIndex = stackItems.length;
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setStartIndex(prevIndex => 
-        // Advance index; reset to 0 when it hits the start of the duplicates
-        (prevIndex + 1) % maxStartIndex
-      );
+      setStartIndex(prevIndex => (prevIndex + 1) % maxStartIndex);
     }, intervalDuration);
-
     return () => clearInterval(timer);
   }, [maxStartIndex]);
 
-  // Calculate the translateX value (Percentage shift)
   const translateX = -(startIndex * (100 / itemsPerPage));
-
-  // Define the Framer Motion transition properties
-  const slideTransition = {
-    duration: 1.2, // slightly slower slide animation
-    ease: "easeInOut",
-  };
+  const slideTransition = { duration: 1.2, ease: "easeInOut" };
 
   return (
     <motion.div 
@@ -192,37 +170,28 @@ function StackGrid() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      // Tailwind classes for the main carousel viewport
-      className="max-w-6xl mx-auto overflow-hidden px-4" 
+      className="max-w-6xl mx-auto overflow-hidden px-4"
     >
-      {/* Inner track uses animate prop for sliding */}
       <motion.div 
         className="flex" 
         animate={{ x: `${translateX}%` }}
         transition={slideTransition}
       >
         {duplicatedItems.map((item, index) => (
-          // Item wrapper uses w-1/6 to ensure 6 items fit on large screens
-          <div
-            key={index}
-            // w-full on mobile, w-1/3 on small/medium screens, w-1/6 on large screens
-            className="flex-shrink-0 w-full sm:w-1/3 lg:w-1/6" 
-          >
-            {/* Inner padding for spacing between cards */}
+          <div key={index} className="flex-shrink-0 w-1/2 sm:w-1/3 lg:w-1/6">
             <div className="p-3">
-              {/* Individual stack card styling */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3 }}
                 className="bg-white rounded-lg shadow-md h-32 flex flex-col items-center justify-center p-4 border border-gray-100 transition duration-300 hover:shadow-xl"
+                style={{
+                  background: "var(--bg)",   // ✅ Uses app background (light or dark)
+                  color: "var(--text)"       // ✅ Text adapts to theme
+                }}
               >
-                <img 
-                  src={item.logo} 
-                  alt={item.name} 
-                  className="w-16 h-16 object-contain mb-1"
-                />
+                <img src={item.logo} alt={item.name} className="w-16 h-16 object-contain mb-1" />
                 <span className="text-sm font-semibold text-gray-700">{item.name}</span>
               </motion.div>
             </div>

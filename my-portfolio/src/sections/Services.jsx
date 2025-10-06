@@ -57,8 +57,9 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-white rounded-3xl p-10 text-center"
-            whileHover={{ boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)' }}
+              className="rounded-3xl p-10 text-center"
+              style={{ background: "var(--service-card-bg)" }}
+              whileHover={{ boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)' }}
             >
               {/* Icon with light background */}
               <div className="flex justify-center items-center w-16 h-16 rounded-full bg-blue-50 mx-auto mb-6">
@@ -69,7 +70,9 @@ export default function Services() {
               <h3 className="text-2xl font-semibold mb-4">{service.title}</h3>
               
               {/* Description */}
-              <p className="text-lg font-medium text-gray-600">{service.description}</p>
+              <p className="text-lg font-medium" style={{ color: "var(--text-secondary)" }}>
+                {service.description}
+              </p>
             </motion.div>
           ))}
         </div>

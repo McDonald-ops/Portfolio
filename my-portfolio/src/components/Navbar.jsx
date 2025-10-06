@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-import { SunIcon, MoonIcon, Bars3Icon } from '@heroicons/react/24/outline'
+import { Bars3Icon } from '@heroicons/react/24/outline'
 import avatar from '../assets/avatar.jpg'
+import ThemeToggle from './ThemeToggle'
 
 const links = [
   { href: '#about', label: 'About' },
@@ -12,7 +13,6 @@ const links = [
 export default function Navbar() {
   const [active, setActive] = useState('#about')
   const [open, setOpen] = useState(false)
-  const [isSunny, setIsSunny] = useState(true)
 
   useEffect(() => {
     const sections = links
@@ -48,50 +48,54 @@ export default function Navbar() {
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
       <div className="mx-auto max-w-7xl container-x">
-        <div className="pointer-events-auto mt-4 rounded-full border border-gray-100 bg-[#F9FAFB]/90 shadow-lg backdrop-blur">
+        <div
+          className="pointer-events-auto mt-4 rounded-full shadow-lg backdrop-blur"
+          style={{ border: `1px solid var(--nav-border)`, background: 'var(--nav-bg)' }}
+        >
           <nav className="flex items-center justify-between px-4 py-3" aria-label="Global">
             <a href="#home" className="flex items-center gap-3">
               <div className="h-10 w-10 rounded-full overflow-hidden bg-transparent">
                 <img src={avatar} alt="Avatar" className="h-full w-full object-cover" />
               </div>
             </a>
-        
-        <div className="hidden items-center justify-center gap-8 sm:flex">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className={`text-base font-semibold hover:text-gray-900 transition-colors duration-300 ${active === l.href ? 'text-blue-500' : 'text-gray-600'}`}
-            >
-              {l.label}
-            </a>
-          ))}
-        </div>
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            className="bg-gray-200 rounded-full w-10 h-10 flex items-center justify-center hover:bg-gray-300 transition"
-            aria-label="Toggle theme icon"
-            onClick={() => setIsSunny((v) => !v)}
-          >
-            {isSunny ? (
-              <SunIcon className="h-5 w-5 text-yellow-500" />
-            ) : (
-              <MoonIcon className="h-5 w-5 text-gray-700" />
-            )}
-          </button>
-          <button
-            type="button"
-            className="sm:hidden p-2 text-gray-700 hover:text-gray-900 transition"
-            aria-label="Toggle menu"
-            onClick={() => setOpen((v) => !v)}
-          >
-            <Bars3Icon className="h-6 w-6" />
-          </button>
-        </div>
+
+            <div className="hidden items-center justify-center gap-8 sm:flex">
+              {links.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  style={{
+                    color: active === l.href ? 'var(--nav-link-active)' : 'var(--nav-link)',
+                  }}
+                  className="text-xl font-semibold transition-colors duration-300 hover:!text-[var(--nav-link-hover)]"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <button
+                type="button"
+                aria-label="Toggle menu"
+                onClick={() => setOpen((v) => !v)}
+                style={{ color: 'var(--nav-link)' }}
+                className="sm:hidden p-2 transition-colors hover:!text-[var(--nav-link-hover)]"
+              >
+                <Bars3Icon className="h-6 w-6" />
+              </button>
+            </div>
           </nav>
+
           <div
-            className={`sm:hidden border-t border-gray-200 bg-white/95 overflow-hidden transition-[max-height] duration-300 ease-out ${open ? 'max-h-64' : 'max-h-0'}`}
+            className={`sm:hidden overflow-hidden transition-[max-height] duration-300 ease-out ${
+              open ? 'max-h-64' : 'max-h-0'
+            }`}
+            style={{
+              background: 'var(--nav-mobile-bg)',
+              borderTop: `1px solid var(--nav-mobile-border)`,
+            }}
             aria-hidden={!open}
           >
             <div className="px-4 py-3">
@@ -100,7 +104,10 @@ export default function Navbar() {
                   <a
                     key={l.href}
                     href={l.href}
-                    className={`block rounded-md px-2 py-2 text-base font-semibold hover:bg-gray-100 ${active === l.href ? 'text-blue-500' : 'text-gray-600'}`}
+                    style={{
+                      color: active === l.href ? 'var(--nav-link-active)' : 'var(--nav-link)',
+                    }}
+                    className="block rounded-md px-2 py-2 text-base font-semibold transition-colors hover:!bg-[var(--nav-mobile-hover)] hover:!text-[var(--nav-link-hover)]"
                   >
                     {l.label}
                   </a>

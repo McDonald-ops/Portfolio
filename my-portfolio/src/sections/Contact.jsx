@@ -18,8 +18,12 @@ export default function Contact() {
     >
       {/* Title */}
       <h2 className="text-4xl font-extrabold text-center mb-6">Get in Touch</h2>
+
       {/* Subtitle */}
-      <p className="text-lg text-gray-600 font-medium text-center mb-8 ">
+      <p
+        className="text-lg font-medium text-center mb-8"
+        style={{ color: "var(--contact-subtext)" }}
+      >
         Whether it’s starting fresh, improving what’s already there, or coding side by side, I’d love to hear from you.
       </p>
 
@@ -31,21 +35,28 @@ export default function Contact() {
           return (
             <div key={item.label} className="text-center">
               <div className="flex items-center justify-center gap-2">
-                <Icon className="h-8 w-8 text-gray-800" aria-hidden="true" />
-                <div className="text-xl font-semibold text-gray-900">{item.label}</div>
+                <Icon className="h-8 w-8" style={{ color: "var(--contact-icon)" }} aria-hidden="true" />
+                <div className="text-xl font-semibold" style={{ color: "var(--contact-label)" }}>
+                  {item.label}
+                </div>
               </div>
               <div className="mt-1">
                 {isLink ? (
                   <a
                     href={item.link}
-                    className="text-lg font-normal text-gray-700 hover:text-gray-900 transition-colors"
+                    className="text-lg font-normal transition-colors"
+                    style={{ color: "var(--contact-link)" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--contact-link-hover)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--contact-link)")}
                     target={item.link?.startsWith('http') ? '_blank' : undefined}
                     rel={item.link?.startsWith('http') ? 'noopener noreferrer' : undefined}
                   >
                     {item.value}
                   </a>
                 ) : (
-                  <span className="text-lg font-normal text-gray-700">{item.value}</span>
+                  <span className="text-lg font-normal" style={{ color: "var(--contact-link)" }}>
+                    {item.value}
+                  </span>
                 )}
               </div>
             </div>
@@ -55,4 +66,3 @@ export default function Contact() {
     </motion.section>
   )
 }
-
