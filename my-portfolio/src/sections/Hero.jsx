@@ -1,5 +1,7 @@
 import { useState, useEffect, useMemo, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { Download } from 'lucide-react'
+import cvPdf from '../assets/Mcdonald-odiase-CV.pdf'
 
 export default function Hero() {
   const phrases = useMemo(() => [
@@ -74,7 +76,8 @@ export default function Hero() {
       <div className="pt-6">
         {/* ✅ button adapts border/text color */}
         <a
-          href="#contact"
+          href={cvPdf}
+          download="Mcdonald-odiase-CV.pdf"
           className="rounded-full px-10 py-4 text-xl font-regular hover:scale-105 transition-transform duration-300 inline-block text-center"
           style={{
             background: "var(--btn-bg)",
@@ -82,7 +85,10 @@ export default function Hero() {
             border: "4px solid var(--btn-border)"
           }}
         >
-          Available for work
+          <span className="inline-flex items-center gap-2">
+            <Download className="h-5 w-5" />
+            Download CV
+          </span>
         </a>
       </div>
     </motion.div>
