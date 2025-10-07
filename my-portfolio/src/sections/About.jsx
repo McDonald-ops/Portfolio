@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
+// eslint-disable-next-line no-unused-vars
 import { motion, useReducedMotion } from 'framer-motion'
 import vectorImage from '../assets/vector.png'
 import CSS3_logo from '../assets/CSS3_logo.png'
@@ -189,10 +190,11 @@ function StackGrid() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3 }}
-                className="bg-white rounded-lg shadow-md h-32 flex flex-col items-center justify-center p-4 border border-gray-100 transition duration-300 hover:shadow-xl"
+                className="bg-white rounded-lg shadow-md h-32 flex flex-col items-center justify-center p-4 border transition duration-300 hover:shadow-xl"
                 style={{
                   background: "var(--bg)",   // ✅ Uses app background (light or dark)
-                  color: "var(--text)"       // ✅ Text adapts to theme
+                  color: "var(--text)",      // ✅ Text adapts to theme
+                  borderColor: "var(--stack-border)" // ✅ Hide border in dark mode
                 }}
               >
                 <img src={item.logo} alt={item.name} className="w-16 h-16 object-contain mb-1" />

@@ -1,8 +1,9 @@
-import { Github, Linkedin, Mail } from 'lucide-react'
+import { Github, Linkedin, Mail, Twitter } from 'lucide-react'
 
 const socialLinks = [
   { icon: Github, url: 'https://github.com/mcdonald-ops', label: 'GitHub' },
   { icon: Linkedin, url: 'https://www.linkedin.com/in/mcdonald-odiase-68071535a', label: 'LinkedIn' },
+  { icon: Twitter, url: 'https://x.com/thisismcdonald_?s=21', label: 'X (Twitter)' },
   { icon: Mail, url: 'mailto:odiasemcdonald1@gmail.com', label: 'Email' },
 ]
 

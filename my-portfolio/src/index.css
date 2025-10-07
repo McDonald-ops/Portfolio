@@ -36,6 +36,9 @@
   --nav-mobile-bg: rgba(255, 255, 255, 0.95);
   --nav-mobile-border: #E5E7EB; /* gray-200 */
   --nav-mobile-hover: #F3F4F6; /* gray-100 */
+
+  /* About stack card */
+  --stack-border: #F3F4F6; /* gray-100: visible in light mode */
 }
 
 /* Dark theme */
@@ -74,6 +77,9 @@ html.dark {
   --nav-mobile-bg: rgba(17, 24, 39, 0.95);
   --nav-mobile-border: #374151; /* gray-700 */
   --nav-mobile-hover: #1F2937; /* gray-800 */
+
+  /* About stack card */
+  --stack-border: transparent; /* hidden in dark mode */
 }
 
 html, body, #root {

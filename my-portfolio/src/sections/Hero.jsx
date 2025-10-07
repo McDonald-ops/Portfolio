@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useRef } from 'react'
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion'
 import { Download } from 'lucide-react'
 import cvPdf from '../assets/Mcdonald-odiase-CV.pdf'

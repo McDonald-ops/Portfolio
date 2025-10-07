@@ -3,6 +3,14 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
+// Apply persisted theme immediately to avoid light/dark flicker on first paint
+try {
+  const storedTheme = localStorage.getItem('theme')
+  if (storedTheme) {
+    document.documentElement.classList.toggle('dark', storedTheme === 'dark')
+  }
+} catch { /* empty */ }
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
