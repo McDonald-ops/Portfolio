@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import vectorImage from '../assets/vector.png'
 import CSS3_logo from '../assets/CSS3_logo.png'
 import ESLint_logo from '../assets/ESLint_logo.png'
@@ -14,6 +14,7 @@ import redux from '../assets/redux.png'
 import tailwind_css_logo from '../assets/tailwind-css-logo.png'
 
 export default function About() {
+  const prefersReducedMotion = useReducedMotion()
   const journeyStages = [
     { title: "🌱 Curiosity Sparked", description: "Started with a love for solving puzzles and tinkering with tech, which grew into a curiosity for how software is built." },
     { title: "🔍 Self Discovery", description: "Explored coding through self-study, building small projects with HTML, CSS, and JavaScript to understand the basics of the web." },
@@ -35,12 +36,15 @@ export default function About() {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10 items-center"
           >
-            {/* Left Column - Image */}
+            {/* Left Column - Image (levitating) */}
             <div className="flex justify-center">
-              <img 
-                src={vectorImage} 
-                alt="About Me Illustration" 
-                className="w-full h-auto max-w-md object-contain"
+              <motion.img
+                src={vectorImage}
+                alt="About Me Illustration"
+                className="w-full h-auto max-w-md object-contain will-change-transform"
+                initial={{ x: 0, y: 0 }}
+                animate={prefersReducedMotion ? { x: 0, y: 0 } : { x: [0, 6, 0, -6, 0], y: [0, -10, 0, 10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               />
             </div>
             
