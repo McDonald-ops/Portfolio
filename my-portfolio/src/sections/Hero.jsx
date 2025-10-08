@@ -60,7 +60,7 @@ export default function Hero() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className="flex min-h-[60vh] flex-col items-center justify-center gap-6 text-center"
     >
-      <h1 className="pt-30 text-5xl font-extrabold tracking-tight sm:text-7xl">
+      <h1 className="pt-30 text-4xl sm:text-7xl font-extrabold tracking-tight">
         Hi, I'm McDonald
       </h1>
 
@@ -69,7 +69,7 @@ export default function Hero() {
         {text}
         {/* ✅ caret adapts to theme */}
         <div
-          className="ml-1 inline-block h-6 w-1 animate-pulse align-middle"
+          className="ml-1 inline-block h-5 sm:h-6 w-1 animate-pulse align-middle"
           style={{ background: "var(--accent)" }}
         />
       </div>

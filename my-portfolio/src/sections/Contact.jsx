@@ -15,29 +15,29 @@ export default function Contact() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="mx-auto max-w-4xl"
+      className="mx-auto max-w-4xl px-4 sm:px-0"
     >
       {/* Title */}
-      <h2 className="text-4xl font-extrabold text-center mb-6">Get in Touch</h2>
+      <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-6">Get in Touch</h2>
 
       {/* Subtitle */}
       <p
-        className="text-lg font-medium text-center mb-8"
+        className="text-base sm:text-lg font-medium text-center mb-8 px-2 sm:px-0"
         style={{ color: "var(--contact-subtext)" }}
       >
         Whether it’s starting fresh, improving what’s already there, or coding side by side, I’d love to hear from you.
       </p>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10 justify-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-8 sm:gap-x-8 sm:gap-y-10 justify-items-center">
         {contactInfo.map((item) => {
           const Icon = item.icon
           const isLink = Boolean(item.link)
           return (
             <div key={item.label} className="text-center">
               <div className="flex items-center justify-center gap-2">
-                <Icon className="h-8 w-8" style={{ color: "var(--contact-icon)" }} aria-hidden="true" />
-                <div className="text-xl font-semibold" style={{ color: "var(--contact-label)" }}>
+                <Icon className="h-6 w-6 sm:h-8 sm:w-8" style={{ color: "var(--contact-icon)" }} aria-hidden="true" />
+                <div className="text-lg sm:text-xl font-semibold" style={{ color: "var(--contact-label)" }}>
                   {item.label}
                 </div>
               </div>
@@ -45,7 +45,7 @@ export default function Contact() {
                 {isLink ? (
                   <a
                     href={item.link}
-                    className="text-lg font-normal transition-colors"
+                    className="text-base sm:text-lg font-normal transition-colors break-words"
                     style={{ color: "var(--contact-link)" }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = "var(--contact-link-hover)")}
                     onMouseLeave={(e) => (e.currentTarget.style.color = "var(--contact-link)")}
@@ -55,7 +55,7 @@ export default function Contact() {
                     {item.value}
                   </a>
                 ) : (
-                  <span className="text-lg font-normal" style={{ color: "var(--contact-link)" }}>
+                  <span className="text-base sm:text-lg font-normal break-words" style={{ color: "var(--contact-link)" }}>
                     {item.value}
                   </span>
                 )}

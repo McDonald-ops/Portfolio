@@ -50,7 +50,7 @@ export default function Services() {
         <h2 className="text-4xl font-extrabold mb-10 text-center">Services</h2>
         
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {servicesData.map((service) => (
             <motion.div
               key={service.id}
@@ -58,20 +58,20 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="rounded-3xl p-10 text-center"
+              className="rounded-3xl p-6 sm:p-10 text-center"
               style={{ background: "var(--service-card-bg)" }}
               whileHover={{ boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)' }}
             >
               {/* Icon with light background */}
-              <div className="flex justify-center items-center w-16 h-16 rounded-full bg-blue-50 mx-auto mb-6">
+              <div className="flex justify-center items-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-50 mx-auto mb-6">
                 {renderIcon(service.icon)}
               </div>
               
               {/* Title */}
-              <h3 className="text-2xl font-semibold mb-4">{service.title}</h3>
+              <h3 className="text-xl sm:text-2xl font-semibold mb-4 whitespace-nowrap">{service.title}</h3>
               
               {/* Description */}
-              <p className="text-lg font-medium" style={{ color: "var(--text-secondary)" }}>
+              <p className="text-base sm:text-lg font-medium" style={{ color: "var(--text-secondary)" }}>
                 {service.description}
               </p>
             </motion.div>

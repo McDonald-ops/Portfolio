@@ -16,9 +16,9 @@ export default function Footer() {
       </div>
 
       <footer>
-        <div className="mx-auto max-w-4xl py-16 text-center">
+        <div className="mx-auto max-w-4xl py-12 sm:py-16 px-4 sm:px-0 text-center">
           {/* Social icons row */}
-          <div className="flex items-center justify-center space-x-6 mb-4">
+          <div className="flex items-center justify-center space-x-5 sm:space-x-6 mb-4">
             {socialLinks.map((s) => {
               const Icon = s.icon
               const isExternal = s.url.startsWith('http')
@@ -34,13 +34,13 @@ export default function Footer() {
                   onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--footer-icon-hover)')}
                   onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--footer-icon)')}
                 >
-                  <Icon className="h-6 w-6" />
+                  <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </a>
               )
             })}
           </div>
           {/* Copyright */}
-          <p className="text-md" style={{ color: 'var(--footer-text)' }}>
+          <p className="text-sm sm:text-md" style={{ color: 'var(--footer-text)' }}>
             © 2025 McDonald Odiase. All rights reserved.
           </p>
         </div>

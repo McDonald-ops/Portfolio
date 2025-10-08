@@ -77,7 +77,7 @@ export default function Portfolio() {
       <h2 className="text-4xl font-extrabold text-center mb-10">Portfolio</h2>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
         {visibleProjects.map((p, i) => (
           <motion.article
             key={p.id}
@@ -85,19 +85,19 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.4, delay: i * 0.05 }}
-            className="group rounded-2xl shadow-xl p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl"
+            className="group rounded-2xl shadow-xl p-3 sm:p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl"
             style={{ background: "var(--service-card-bg)" }}
           >
             <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" className="block">
               <img
                 src={p.imageSrc}
                 alt={`${p.title} thumbnail`}
-                className="h-64 w-full rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                className="h-52 sm:h-64 w-full rounded-xl object-cover transition-transform duration-300 group-hover:scale-[1.02]"
               />
             </a>
             <div className="mt-4">
-              <div className="flex items-center gap-2">
-                <h3 className="text-2xl font-semibold" style={{ color: "var(--text)" }}>{p.title}</h3>
+              <div className="flex items-center justify-between gap-2 min-w-0">
+                <h3 className="text-xl sm:text-2xl font-semibold truncate" style={{ color: "var(--text)" }}>{p.title}</h3>
                 <a
                   href={p.liveUrl}
                   target="_blank"
@@ -105,17 +105,17 @@ export default function Portfolio() {
                   aria-label={`Open ${p.title}`}
                   className="inline-flex"
                 >
-                  <ExternalLink className="h-5 w-5 transition-colors" style={{ color: "var(--icon)" }} />
+                  <ExternalLink className="h-4 w-4 sm:h-5 sm:w-5 shrink-0 transition-colors" style={{ color: "var(--icon)" }} />
                 </a>
               </div>
-              <p className="mt-2 font-medium text-lg" style={{ color: "var(--text-secondary)" }}>
+              <p className="mt-2 font-medium text-base sm:text-lg" style={{ color: "var(--text-secondary)" }}>
                 {p.description}
               </p>
-              <div className="mt-4 flex flex-wrap gap-2">
+              <div className="mt-4 flex flex-nowrap sm:flex-wrap gap-2 overflow-x-auto sm:overflow-visible">
                 {p.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full px-3 py-1 text-sm"
+                    className="rounded-full px-2 sm:px-3 py-0.5 sm:py-1 text-xs sm:text-sm whitespace-nowrap shrink-0"
                     style={{ background: "var(--tag-bg)", color: "var(--tag-text)" }}
                   >
                     {tag}
@@ -131,7 +131,7 @@ export default function Portfolio() {
       <div className="flex justify-center">
         <button
           onClick={() => setShowAll((v) => !v)}
-          className="mt-12 rounded-full bg-transparent px-10 py-4 text-xl font-regular hover:scale-105 transition-transform duration-300 inline-block text-center"
+          className="mt-12 rounded-full bg-transparent px-8 sm:px-10 py-3 sm:py-4 text-lg sm:text-xl font-regular hover:scale-105 transition-transform duration-300 inline-block text-center"
           style={{
             color: "var(--text)",
             border: "4px solid var(--btn-border)",

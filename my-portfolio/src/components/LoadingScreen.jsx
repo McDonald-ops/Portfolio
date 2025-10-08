@@ -26,7 +26,7 @@ export default function LoadingScreen({ onReady }) {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="inline-flex items-center flex-wrap sm:flex-nowrap gap-3 sm:gap-4 md:gap-6 text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight max-w-[90vw] break-words"
+          className="inline-flex items-center flex-nowrap whitespace-nowrap gap-2 sm:gap-4 md:gap-6 text-2xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight max-w-[100vw] overflow-hidden"
         >
           <motion.span
             initial={{ rotate: 0 }}

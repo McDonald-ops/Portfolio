@@ -27,7 +27,7 @@ export default function About() {
   return (
     <div>
       {/* About Section Container (now dark-aware) */}
-      <div className="about-container pt-24 pb-4">
+      <div className="about-container pt-24 pb-4 px-4 sm:px-0">
         <div className="max-w-7xl mx-auto">
           {/* About Me Section */}
           <motion.div
@@ -52,8 +52,8 @@ export default function About() {
             {/* Right Column - Content */}
             <div className="flex flex-col gap-8">
               <div>
-                <h2 className="text-4xl font-extrabold mb-10">About Me</h2>
-                <p className="text-lg font-medium leading-relaxed">
+                <h2 className="text-3xl sm:text-4xl font-extrabold mb-10 px-2 sm:px-0">About Me</h2>
+                <p className="text-base sm:text-lg font-medium leading-relaxed px-2 sm:px-0">
                   My journey into tech started from curiosity and a love for solving puzzles.
                   As a kid, I was always tinkering with things, and that curiosity eventually turned into building solutions with code.<br/> 
                   Today, I’m a frontend developer who enjoys creating clean, responsive, and user-friendly web apps with React, Next.js, and Tailwind CSS. 
@@ -64,8 +64,8 @@ export default function About() {
               </div>
               
               {/* CTA Button */}
-              <div className="pt-6">
-                <a href="#contact" className="rounded-full bg-transparent px-10 py-4 text-xl font-regular border-4 hover:scale-105 transition-transform duration-300 inline-block text-center">
+              <div className="pt-6 px-2 sm:px-0">
+                <a href="#contact" className="rounded-full bg-transparent px-8 sm:px-10 py-4 text-lg sm:text-xl font-regular border-4 hover:scale-105 transition-transform duration-300 inline-block text-center">
                   Get in Touch
                 </a>
               </div>
@@ -80,14 +80,14 @@ export default function About() {
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
             className="mt-24 py-16"
           >
-            <h2 className="text-4xl font-bold mb-12 text-center">Learning Journey</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center">Learning Journey</h2>
             
             <div className="max-w-5xl mx-auto relative">
               <div className="relative">
                 {journeyStages.map((stage, index) => (
                   <div key={index} className="mb-10 relative">
                     {/* Vertical Line */}
-                    <div className="md:hidden absolute left-2 top-8 bottom-0 h-full w-0.5 bg-gray-300 z-0" />
+                    <div className="md:hidden absolute left-0 top-8 bottom-0 h-full w-0.5 bg-gray-300 z-0" />
                     <div className="hidden md:block absolute left-1/2 top-8 bottom-0 h-full w-0.5 bg-gray-300 transform -translate-x-1/2 z-0" />
                     
                     {/* Stage Card */}
@@ -96,15 +96,15 @@ export default function About() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className={`rounded-xl shadow-md p-4 w-full max-w-sm md:max-w-md min-h-48 md:min-h-56 mx-auto ${index % 2 === 0 ? 'md:ml-0 md:mr-auto ' : 'md:ml-auto md:mr-0 '}`}
+                      className={`rounded-xl shadow-md p-4 sm:p-4 pl-6 pr-4 w-full max-w-sm md:max-w-md min-h-48 md:min-h-56 mx-auto ${index % 2 === 0 ? 'md:ml-0 md:mr-auto ' : 'md:ml-auto md:mr-0 '}`}
                       style={{ background: "var(--bg)", color: "var(--text)", zIndex: 1 }}
                     >
-                      <h3 className="text-2xl font-semibold mb-2">{stage.title}</h3>
-                      <p className="text-lg font-medium leading-relaxed">{stage.description}</p>
+                      <h3 className="text-xl sm:text-2xl font-semibold mb-2">{stage.title}</h3>
+                      <p className="text-base sm:text-lg font-medium leading-relaxed">{stage.description}</p>
                     </motion.div>
                     
                     {/* Stage Marker */}
-                    <div className={`md:hidden absolute top-0 left-2 w-3 h-3 bg-blue-500 rounded-full z-20`} />
+                    <div className={`md:hidden absolute top-0 left-0 w-3 h-3 bg-blue-500 rounded-full z-20`} />
                     <div className={`hidden md:block absolute top-0 left-1/2 w-4 h-4 bg-blue-500 rounded-full transform -translate-x-1/2 z-20`} />
                   </div>
                 ))}
