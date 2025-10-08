@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Bars3Icon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import avatar from '../assets/avatar.jpg'
 import ThemeToggle from './ThemeToggle'
 
@@ -48,16 +48,18 @@ export default function Navbar() {
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
       <div className="mx-auto max-w-7xl container-x">
-        <div
-          className="pointer-events-auto mt-4 rounded-full shadow-lg backdrop-blur"
-          style={{ border: `1px solid var(--nav-border)`, background: 'var(--nav-bg)' }}
-        >
-          <nav className="flex items-center justify-between px-4 py-3" aria-label="Global">
-            <a href="#home" className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-full overflow-hidden bg-transparent">
-                <img src={avatar} alt="Avatar" className="h-full w-full object-cover" />
-              </div>
-            </a>
+        <div className="pointer-events-auto mt-4">
+          {/* Keep header pill shape fixed; dropdown renders below without altering it */}
+          <div
+            className="rounded-full shadow-lg backdrop-blur"
+            style={{ border: `1px solid var(--nav-border)`, background: 'var(--nav-bg)' }}
+          >
+            <nav className="flex items-center justify-between px-4 py-3" aria-label="Global">
+              <a href="#home" className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full overflow-hidden bg-transparent">
+                  <img src={avatar} alt="Avatar" className="h-full w-full object-cover" />
+                </div>
+              </a>
 
             <div className="hidden items-center justify-center gap-8 sm:flex">
               {links.map((l) => (
@@ -82,11 +84,20 @@ export default function Navbar() {
                 onClick={() => setOpen((v) => !v)}
                 style={{ color: 'var(--nav-link)' }}
                 className="sm:hidden p-2 transition-colors hover:!text-[var(--nav-link-hover)]"
+                aria-expanded={open}
               >
-                <Bars3Icon className="h-6 w-6" />
+                <span className="relative inline-block h-6 w-6">
+                  <Bars3Icon
+                    className={`absolute inset-0 h-6 w-6 transition-transform transition-opacity duration-300 ${open ? 'opacity-0 scale-90 rotate-90' : 'opacity-100 scale-100 rotate-0'}`}
+                  />
+                  <XMarkIcon
+                    className={`absolute inset-0 h-6 w-6 transition-transform transition-opacity duration-300 ${open ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-90 -rotate-90'}`}
+                  />
+                </span>
               </button>
             </div>
           </nav>
+          </div>
 
           <div
             className={`sm:hidden overflow-hidden transition-[max-height] duration-300 ease-out ${
